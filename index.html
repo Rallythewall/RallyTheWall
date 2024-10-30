@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rally the Wall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/games.js"></script>
+</head>
+<body>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="brick-area"></div>
+    <div class="controls">
+        <button id="republicans">Add Brick (Republicans)</button>
+        <button id="democrats">Remove Brick (Democrats)</button>
+    </div>
+    <div id="bricks-built"></div>
+    <div id="click-info"></div>
+    
+    <script src="script.js"></script>
+    <script>
+        function onLoad() {
+            TelegramGameProxy.initParams();
+        }
+    
+        window.onload = onLoad;
+    
+        // Function to send score back to Telegram
+        function sendScore(score) {
+            TelegramGameProxy.setScore(score);
+        }
+    
+        // Modify your existing code to call sendScore when appropriate
+        // For example, you might call it whenever bricksBuilt changes:
+        function updateCounters() {
+            document.getElementById('bricks-built').textContent = `Bricks Built: ${bricksBuilt} | Bricks Removed: ${bricksRemoved} | Add Clicks: ${addClickCount} | Remove Clicks: ${removeClickCount}`;
+            sendScore(bricksBuilt - bricksRemoved);
+        }
+    </script>
+</body>
+</html>
