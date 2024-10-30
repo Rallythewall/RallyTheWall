@@ -3,7 +3,7 @@ let bricksRemoved = 0;
 let addClickCount = 0;
 let removeClickCount = 0;
 const maxBricksPerLine = Math.floor(document.querySelector('.brick-area').clientWidth / 64); // Now exactly 64px width
-const initialBricks = 100;
+const initialBricks = 15;
 
 // Initialize the game with 100 bricks
 function initializeGame() {
